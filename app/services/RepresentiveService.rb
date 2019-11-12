@@ -1,4 +1,4 @@
-class RepresentiveService  
+class RepresentiveService
   def self.get_federal_representives(address)
     response = RestClient::Request.execute( method: :get, url: @@url, headers: headers('country', address))
     google_civic_reps = JSON.parse(response.body)
@@ -13,11 +13,12 @@ class RepresentiveService
     return officals
   end
 
-  private 
+  private
   @@url = "https://www.googleapis.com/civicinfo/v2/representatives?key=#{ENV['GOOGLE_CIVIC']}"
   def self.headers(level, address)
-    address = '145 S 3rd Street Brooklyn NY 11211' if address = ''
-     { 
+    byebug
+    address = '145 S 3rd Street Brooklyn NY 11211' if address == ''
+     {
       params: {
         address: address,
         levels: level
@@ -32,7 +33,7 @@ class RepresentiveService
     return bodyJson
   end
 
-  def self.add_title_to_offical(google_civic_reps)    
+  def self.add_title_to_offical(google_civic_reps)
     officals = google_civic_reps["officials"]
     google_civic_reps["offices"].each do |office|
       office["officialIndices"].each { |index| officals[index.to_i]['title'] = office['name'] }
