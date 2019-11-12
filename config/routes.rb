@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-  resources :representives, path: :federal, to: :federal
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  scope :representives do 
+    resources :federal_representives, path: :federal, to: :federal
+    resources :local_representives, path: :local, to: :local
+  end
 end
