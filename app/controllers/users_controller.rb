@@ -16,8 +16,8 @@ class UsersController < ApplicationController
     if user 
       if params[:federal] == 'true'
         google_civic_reps = RepresentativeService.get_federal_representatives(user.address)
-        final_reps = google_civic_reps.map do |rep|
-          user.representatives << rep
+  
+        final_reps = google_civic_reps.map do |rep|         
           names = rep["name"].split(' ') 
           our_rep = nil
           if names.count == 3
@@ -27,6 +27,7 @@ class UsersController < ApplicationController
           end
           if our_rep
             rep = rep.merge({proPublica_id: our_rep['proPublica_id']})
+            user.representatives << our_rep unless user.representatives.includes?(our_rep)
           end
           rep
         end
