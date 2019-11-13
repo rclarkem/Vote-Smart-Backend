@@ -16,7 +16,6 @@ class RepresentativeService
   private
   @@url = "https://www.googleapis.com/civicinfo/v2/representatives?key=#{ENV['GOOGLE_CIVIC']}"
   def self.headers(level, address)
-    byebug
     address = '145 S 3rd Street Brooklyn NY 11211' if address == ''
      {
       params: {
