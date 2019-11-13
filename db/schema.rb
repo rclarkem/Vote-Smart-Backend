@@ -10,9 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_11_214121) do
+ActiveRecord::Schema.define(version: 2019_11_13_180410) do
 
-  create_table "representives", force: :cascade do |t|
+  create_table "representatives", force: :cascade do |t|
+    t.string "proPublica_id"
+    t.string "short_title"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "middle_name"
+    t.string "ocd_id"
+    t.string "twitter_account"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "representatives_users", id: false, force: :cascade do |t|
+    t.integer "representative_id", null: false
+    t.integer "user_id", null: false
+    t.index ["representative_id", "user_id"], name: "index_representatives_users_on_representative_id_and_user_id"
+    t.index ["user_id", "representative_id"], name: "index_representatives_users_on_user_id_and_representative_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,12 +1,12 @@
-class RepresentiveService  
-  def self.get_federal_representives(address)
+class RepresentativeService  
+  def self.get_federal_representatives(address)
     response = RestClient::Request.execute( method: :get, url: @@url, headers: headers('country', address))
     google_civic_reps = JSON.parse(response.body)
     officals = add_title_to_offical(google_civic_reps)
     return officals
   end
 
-  def self.get_local_representives(address)
+  def self.get_local_representatives(address)
     response = RestClient::Request.execute( method: :get, url: @@url, headers: headers('administrativeArea1', address) )
     google_civic_reps = JSON.parse(response.body)
     officals = add_title_to_offical(google_civic_reps)
