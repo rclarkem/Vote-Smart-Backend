@@ -31,10 +31,12 @@ module Votesmart
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-    config.middleware.insert_before 0, Rack::Cors do
+    config.middleware.use Rack::Cors do
       allow do
-          origins '*'
-          resource '*', headers: :any, methods: [:get, :post]
+        origins '*'
+        resource '*', 
+            :headers => :any, 
+            :methods => [:get, :post, :delete, :put, :patch]
       end
     end
   end

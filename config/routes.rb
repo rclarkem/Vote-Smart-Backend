@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, only: [:create, :show, :index] do
+  resources :users, only: [:create, :show, :index, :update] do
     namespace :representatives do 
       resources(:federal_representatives, path: :federal) do
         resources :bills, only: [:index]
