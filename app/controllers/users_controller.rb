@@ -17,6 +17,7 @@ class UsersController < ApplicationController
       if params[:federal] == 'true'
         google_civic_reps = RepresentativeService.get_federal_representatives(user.address)
         final_reps = google_civic_reps.map do |rep|
+          user.representatives << rep
           names = rep["name"].split(' ') 
           our_rep = nil
           if names.count == 3
