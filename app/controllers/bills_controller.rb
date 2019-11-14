@@ -1,7 +1,14 @@
 class BillsController < ApplicationController
   def user_voted_bills
     user = User.find(params.require('id'))
-    render json: user.bills
+    bills = user.bills.map do |bill|
+      repUser = RepresentativesUser.find_by(bill_id: bill['bill_id'])
+      if repUser
+        bill = bill.merge({userforBill: repUser.vote})
+      end
+      bill
+    end
+    render json: bills
   end
 
   def show
