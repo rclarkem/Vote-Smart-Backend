@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_11_14_115122) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "representatives", force: :cascade do |t|
     t.string "proPublica_id"
     t.string "short_title"
@@ -24,9 +27,9 @@ ActiveRecord::Schema.define(version: 2019_11_14_115122) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "representatives_users", id: false, force: :cascade do |t|
-    t.integer "representative_id", null: false
-    t.integer "user_id", null: false
+  create_table "representatives_users", force: :cascade do |t|
+    t.bigint "representative_id", null: false
+    t.bigint "user_id", null: false
     t.string "bill_id"
     t.boolean "vote"
     t.index ["representative_id", "user_id"], name: "index_representatives_users_on_representative_id_and_user_id"

@@ -19,9 +19,8 @@ class BillsController < ApplicationController
   end
 
   def destroy
-    representatives_user = RepresentativesUser.find_by(bill_id: params.require('id'), user_id: params.require('user_id'))
-    byebug    
-    render json: representatives_user.destroy()
+    representatives_user = RepresentativesUser.find_by(bill_id: params.require('id'), user_id: params.require('user_id'))  
+    render json: Bill.new(representatives_user.destroy().bill_id).bill
   end
 
   private 
