@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_180410) do
+ActiveRecord::Schema.define(version: 2019_11_14_115122) do
 
   create_table "representatives", force: :cascade do |t|
     t.string "proPublica_id"
@@ -31,6 +31,12 @@ ActiveRecord::Schema.define(version: 2019_11_13_180410) do
     t.boolean "vote"
     t.index ["representative_id", "user_id"], name: "index_representatives_users_on_representative_id_and_user_id"
     t.index ["user_id", "representative_id"], name: "index_representatives_users_on_user_id_and_representative_id"
+  end
+
+  create_table "table_votes", force: :cascade do |t|
+    t.string "bill_id"
+    t.integer "for"
+    t.integer "against"
   end
 
   create_table "users", force: :cascade do |t|

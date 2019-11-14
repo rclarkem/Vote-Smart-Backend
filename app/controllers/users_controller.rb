@@ -26,7 +26,7 @@ class UsersController < ApplicationController
           end
           if our_rep
             rep = rep.merge({proPublica_id: our_rep['proPublica_id']})
-            user.representatives << our_rep unless user.representatives.include?(our_rep)
+            # user.representatives << our_rep unless user.representatives.include?(our_rep)
           end
           rep
         end

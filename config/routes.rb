@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
   resources :users, only: [:create, :show, :index, :update] 
-  resources :representatives, only: :index
-
-  # namespace :representatives do 
-  #   resources(:federal_representatives, path: :federal) do
-  #     resources :bills, only: [:index]
-  #   end 
-  #   # resources :local_representatives, path: :local
-  # end 
+  resources :representatives, only: [:index, :show]
+  get '/bills/voted/:id', to: 'bills#user_voted_bills'
+  resources :representatives_user, only: [:create, :show], path: '/bills'
+  # post '/bills', to: 'representatives_user#create'
+  # get '/bills/:id', to: 'bills#show'
 end
