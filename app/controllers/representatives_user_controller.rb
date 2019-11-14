@@ -4,8 +4,8 @@ class RepresentativesUserController < ApplicationController
     repsentative = Representative.find_by(proPublica_id: req_params[:representative_id])
     req_params[:representative_id] = repsentative.id
     added = RepresentativesUser.create(req_params)
-    if added 
-      render json: added
+    if added
+      render json: Bill.new(added.bill_id).bill.merge({userforBill: added.vote})
     end
   end
 
