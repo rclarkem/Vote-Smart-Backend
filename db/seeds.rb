@@ -42,6 +42,8 @@ members.each do |member|
   rep = rep_params(member)
   save_representative(rep)
 end
+cory = Representative.find(8)
+cory.update(middle_name: 'A.')
 
 # member_id = 'S000148'
 # url = 'https://api.propublica.org/congress/v1/members/S000148/bills/introduced.json'

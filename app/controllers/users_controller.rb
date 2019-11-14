@@ -16,11 +16,12 @@ class UsersController < ApplicationController
     if user 
       if params[:federal] == 'true'
         google_civic_reps = RepresentativeService.get_federal_representatives(user.address)
+        # byebug
         final_reps = google_civic_reps.map do |rep|         
           names = rep["name"].split(' ') 
           our_rep = nil
           if names.count == 3
-            our_rep = Representative.find_by(first_name: names[0], last_name: names[2], middle_name: names[1])
+            our_rep = Representative.find_by(first_name: names[0], last_name: names[2], ocd_id: rep['ocd'])
           else
             our_rep = Representative.find_by(first_name: names[0], last_name: names[1])
           end

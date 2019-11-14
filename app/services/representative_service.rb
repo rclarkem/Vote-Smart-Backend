@@ -35,7 +35,10 @@ class RepresentativeService
   def self.add_title_to_offical(google_civic_reps)
     officals = google_civic_reps["officials"]
     google_civic_reps["offices"].each do |office|
-      office["officialIndices"].each { |index| officals[index.to_i]['title'] = office['name'] }
+      office["officialIndices"].each do |index|
+        officals[index.to_i]['title'] = office['name'] 
+        officals[index.to_i]['ocd'] = office['divisionId']
+      end
     end
     return officals
   end
