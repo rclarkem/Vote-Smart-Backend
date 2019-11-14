@@ -18,6 +18,12 @@ class BillsController < ApplicationController
     render json: bills
   end
 
+  def destroy
+    representatives_user = RepresentativesUser.find_by(bill_id: params.require('id'), user_id: params.require('user_id'))
+    byebug    
+    render json: representatives_user.destroy()
+  end
+
   private 
   def representive_id 
     params.require('id')
