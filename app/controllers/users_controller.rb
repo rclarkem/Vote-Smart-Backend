@@ -45,6 +45,12 @@ class UsersController < ApplicationController
     render json: user  
   end
 
+  def destroy 
+    user = User.find(params.require(:id))
+    user.destroy()
+    render json: user
+  end
+
   private 
   def user_params
     params.require(:user).permit(:username, :address)

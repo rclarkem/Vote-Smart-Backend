@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users, only: [:create, :show, :index, :update] 
+  resources :users, only: [:create, :show, :index, :update, :destroy] 
   resources :representatives, only: [:index, :show]
   get '/bills/voted/:id', to: 'bills#user_voted_bills'
   delete '/bills/voted/:id', to: 'bills#destroy'
