@@ -14,7 +14,7 @@ class BillService
     response = RestClient::Request.execute(
       method: :get, 
       url: @url, 
-      headers: {'X-API-Key': 'x5CZRbo1mbXZiRPEdForiHKlJYGQyOym2EOEwpxa'})
+      headers: {'X-API-Key': ENV['PRO_PUBLICA_API']})
     JSON.parse(response.body)
   end
 end
