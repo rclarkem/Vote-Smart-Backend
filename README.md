@@ -1,7 +1,7 @@
 # VoteSmart
 
 ## Application
-https://votesmartflatiron.herokuapp.com/
+https://vote-smart.vercel.app/
 
 ## Code Style
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
