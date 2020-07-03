@@ -3,6 +3,10 @@
 ## Application
 https://vote-smart.vercel.app/
 
+## Demo
+
+![DemoGif](https://github.com/rclarkem/Vote-Smart-Backend/blob/master/2020-03-03%2019-14-27.2020-03-03%2019_29_55.gif)
+
 ## Code Style
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
