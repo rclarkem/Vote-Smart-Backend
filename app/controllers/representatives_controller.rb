@@ -7,7 +7,7 @@ class RepresentativesController < ApplicationController
     rep = Representative.find_by(proPublica_id: representive_id)
     bills = rep.bills.map do |bill|
       repUser = RepresentativesUser.find_by(bill_id: bill['bill_id'])
-      if repUser
+      if repUser && repUser.user_id == params[:user_id].to_i
         bill = bill.merge({userforBill: repUser.vote})
       end
       bill
